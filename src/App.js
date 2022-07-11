@@ -8,19 +8,17 @@ import Search from "./components/pages/Search";
 
 function App() {
   return (
-  
     <div className="App">
       <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="search" element={<Search />} />
+          <Route path="busqueda" element={<Search />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
       <Footer />
     </div>
-  
   );
 }
 
