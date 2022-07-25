@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -6,16 +6,29 @@ import axios from "axios";
 
 const API_KEY = "3276d54c5e244cd3ba432b5590c39c56";
 
-export default function BasicTextFields() {
+export default function Searcher() {
+  const [search, setSearch] = useState("");
+  const [news, setNews] = useState([]);
+
+  const key = "3276d54c5e244cd3ba432b5590c39c56";
   const getNews = async (query) => {
-    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}&language=es`;
+    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${key}&language=es`;
     const response = await axios.get(url);
     return response.data.articles;
   };
-  const [query, setQuery] = React.useState("");
-  const [articles, setArticles] = React.useState([]);
-  const [error, setError] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getNews(query).then((data) => setNews(data));
+  };
+
+  useEffect(() => {
+    getNews(query).then((data) => setNews(data));
+  }, []);
 
   return (
     <Box
@@ -28,12 +41,14 @@ export default function BasicTextFields() {
     >
       <TextField
         id="outlined-basic"
-        color="secondary"
+        color="warning"
         label="Busqueda"
         focused
         variant="outlined"
+        value={search}
+        onChange={onSearch}
       />
-      <Button variant="contained" color="secondary" type="submit">
+      <Button variant="contained" color="warning" type="submit">
         {" "}
         Buscar{" "}
       </Button>
