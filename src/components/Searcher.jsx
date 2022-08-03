@@ -1,34 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import axios from "axios";
-
-const API_KEY = "3276d54c5e244cd3ba432b5590c39c56";
+import props from "prop-types";
 
 export default function Searcher() {
   const [search, setSearch] = useState("");
-  const [news, setNews] = useState([]);
+  const [messageSize, setMessageSize] = useState(false);
+  const [messageRequired, setMessageRequired] = useState(false);
 
-  const key = "3276d54c5e244cd3ba432b5590c39c56";
-  const getNews = async (query) => {
-    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${key}&language=es`;
-    const response = await axios.get(url);
-    return response.data.articles;
+  const onSearchChange = (evento) => {
+    setSearch(evento.target.value);
+  };
+  const onSearchClick = () => {
+    setMessageSize(true);
+    setMessageRequired(true);
+    if (search.length > 0) {
+      setMessageRequired(false);
+    }
+    if (search.length > 2) {
+      props.onSearch(search);
+      setMessageSize(false);
+      setMessageRequired(false);
+    }
   };
 
-  const onSearch = (e) => {
-    setSearch(e.target.value);
+  const onSearchKey = (evento) => {
+    if (evento.keyCode === 13) {
+      evento.preventDefault();
+      setMessageRequired(false);
+      if (search.length < 1) {
+        setMessageRequired(true);
+      }
+      setMessageSize(true);
+      if (search.length > 2) {
+        props.onSearch(search);
+        setMessageSize(false);
+        setMessageRequired(false);
+      }
+    }
   };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    getNews(query).then((data) => setNews(data));
-  };
-
-  useEffect(() => {
-    getNews(query).then((data) => setNews(data));
-  }, []);
 
   return (
     <Box
@@ -46,12 +57,28 @@ export default function Searcher() {
         focused
         variant="outlined"
         value={search}
-        onChange={onSearch}
+        onChange={onSearchChange}
+        onKeyDown={onSearchKey}
       />
-      <Button variant="contained" color="warning" type="submit">
+      <Button
+        variant="contained"
+        color="warning"
+        type="submit"
+        onClick={onSearchClick}
+      >
         {" "}
         Buscar{" "}
       </Button>
+      {messageRequired && (
+        <alert variant="filled" severity="error">
+          Ingrese valor de busqueda
+        </alert>
+      )}
+      {messageSize && (
+        <alert variant="filled" severity="error">
+          Ingrese como mínimo 3 caracteres
+        </alert>
+      )}
     </Box>
   );
 }
