@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getNews } from "../functions/getNews";
 import PaginationNews from "./PaginationNews";
 import News from "./News";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const NewsList = ({ search }) => {
   const [loading, setLoading] = useState(false);

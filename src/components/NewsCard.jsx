@@ -1,5 +1,10 @@
-import { Card, Container, Col, Row } from "react-bootstrap";
-import "../App.css";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 function NewsCard({ item }) {
   const { DateTime } = require("luxon");
 
@@ -13,28 +18,25 @@ function NewsCard({ item }) {
 
   return (
     <>
-      <div className="row" role="card">
-        <Card border="dark">
-          <Card.Body>
-            <Container>
-              <Row className="card-news">
-                <Col xs={9}>
-                  <Card.Title>
-                    <a href={item.url} target="_blank">
-                      {item.title}
-                    </a>
-                  </Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
-                  <Card.Text>{getPublished(item.publishedAt)}</Card.Text>
-                </Col>
-                <Col xs={3}>
-                  <Card.Img variant="right" src={item.urlToImage} />
-                </Col>
-              </Row>
-            </Container>
-          </Card.Body>
-        </Card>
-      </div>
+      <Card variant="outlined" sx={{ maxWidth: 500 }} className="card-news">
+        <CardMedia component="img" image={item.urlToImage} alt="imagen" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {item.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {item.description}
+          </Typography>
+        </CardContent>
+        <CardActions className="card-footer">
+          <Button size="small" href={item.url}>
+            IR A LA NOTICIA
+          </Button>
+          <Typography variant="body2" color="text.secondary">
+            {getPublished(item.publishedAt)}
+          </Typography>
+        </CardActions>
+      </Card>
     </>
   );
 }

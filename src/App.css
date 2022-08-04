@@ -66,10 +66,14 @@ h1 {
 }
 
 .card-news {
-  min-width: 14rem;
   align-items: center;
-  background-color: rgba(36, 38, 39, 0.1);
-  padding: 15px;
+  background-color: rgba(23, 146, 207, 0.1);
+  margin: 20px;
+}
+
+.card-footer {
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
 .container-info {
@@ -98,4 +102,23 @@ h1 {
 .noticia {
   min-height: calc(100vh - 22rem);
   padding: 0;
+}
+
+.pagination {
+  display: flex;
+  margin: 0;
+  height: 4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.page-link {
+  color: #000;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color: rgb(33, 37, 41);
+  border-color: rgb(33, 37, 41);
 }
