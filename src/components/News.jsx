@@ -8,8 +8,10 @@ function News({ page, pageSize, news, totalResults, maxResults }) {
     if (totalResults) {
       return (
         <div className="container-tag">
-          Está viendo {totalResults > pageSize * page ? pageSize : finalNews}{" "}
-          news de {totalResults} resultados.
+          <Alert variant="info">
+            Está viendo {totalResults > pageSize * page ? pageSize : finalNews}{" "}
+            news de {totalResults} resultados.
+          </Alert>
         </div>
       );
     }

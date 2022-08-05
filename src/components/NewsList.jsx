@@ -1,33 +1,33 @@
 import { useEffect, useState } from "react";
 import { getNews } from "../functions/getNews";
-import PaginationNews from "./PaginationNews";
 import News from "./News";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import Spinner from "react-bootstrap/Spinner";
+import Paginado from "./PaginationNews";
 const NewsList = ({ search }) => {
   const [loading, setLoading] = useState(false);
   const [news, setNews] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [totalResults, setTotalResults] = useState(0);
-  const [maxResults, setMaxanswerults] = useState(false);
+  const [maxResults, setMaxResults] = useState(false);
 
-  const setTotalPages = () => {
+  const seteartotalPages = () => {
     if (totalResults % pageSize === 0) {
       return Math.trunc(totalResults / pageSize);
     }
-    return Math.trunc(totalResults / pageSize) + 1;
+    return Math.trunc(totalResults / pageSize) + 10;
   };
 
-  const totalPages = setTotalPages();
+  const totalPages = seteartotalPages();
 
-  const getNewsFromAPI = async (search, page, pageSize) => {
+  const getNoticiasDesdeServicio = async (search, page, pageSize) => {
     setLoading(true);
-    const answer = await getNews(search, page, pageSize);
-    setNews(answer.articles);
-    setTotalResults(answer.totalResults);
-    setMaxanswerults(false);
-    if (answer.code === "maximumanswerultsReached") setMaxanswerults(true);
+    const respuesta = await getNews(search, page, pageSize);
+    setNews(respuesta.articles);
+    setTotalResults(respuesta.totalResults);
+    setMaxResults(false);
+    if (respuesta.code === "maximumResultsReached") setMaxResults(true);
     setLoading(false);
   };
 
@@ -36,17 +36,13 @@ const NewsList = ({ search }) => {
   }, [search]);
 
   useEffect(() => {
-    setPage(1);
-  }, [search]);
-
-  useEffect(() => {
     if (search) {
-      getNewsFromAPI(search, page, pageSize);
+      getNoticiasDesdeServicio(search, page, pageSize);
     }
   }, [page, search]);
 
   if (loading) {
-    return <p>Loading</p>;
+    return <Spinner animation="border" variant="warning" />;
   }
 
   return (
@@ -55,10 +51,10 @@ const NewsList = ({ search }) => {
         page={page}
         news={news}
         pageSize={pageSize}
-        totalResults={totalResults}
+        dataLength={totalResults}
         maxResults={maxResults}
       />
-      <PaginationNews
+      <Paginado
         page={page}
         setPage={setPage}
         totalResults={totalResults}

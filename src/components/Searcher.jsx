@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-
+import Alert from "@mui/material/Alert";
 export default function Searcher(props) {
   const [searchText, setSearchText] = useState("");
   const [messageSize, setMessageSize] = useState(false);
@@ -69,14 +69,14 @@ export default function Searcher(props) {
         Buscar{" "}
       </Button>
       {messageRequired && (
-        <alert variant="filled" severity="error">
+        <Alert variant="filled" severity="error">
           Ingrese valor de busqueda
-        </alert>
+        </Alert>
       )}
       {messageSize && (
-        <alert variant="filled" severity="error">
+        <Alert variant="filled" severity="error">
           Ingrese como mínimo 3 caracteres
-        </alert>
+        </Alert>
       )}
     </Box>
   );

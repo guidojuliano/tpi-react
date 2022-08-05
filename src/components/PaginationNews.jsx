@@ -1,12 +1,21 @@
 import Pagination from "react-bootstrap/Pagination";
-
-function PaginationNews(props) {
+import "./PaginationNews.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+function Paginado(props) {
   const setPageNext = () => {
-    props.setPage(props.page + 1);
+    if (props.page < props.totalPages) {
+      props.setPage(props.page + 1);
+    } else {
+      return null;
+    }
   };
 
   const setPagePrevious = () => {
-    props.setPage(props.page - 1);
+    if (props.page > 1) {
+      props.setPage(props.page - 1);
+    } else {
+      return null;
+    }
   };
 
   const setFirstPage = () => {
@@ -80,4 +89,4 @@ function PaginationNews(props) {
   );
 }
 
-export default PaginationNews;
+export default Paginado;

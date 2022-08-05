@@ -1,0 +1,54 @@
+.pagination {
+  display: flex;
+  margin: 1px;
+  height: 4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  text-decoration: none;
+  border: #fff;
+}
+
+.pagination li {
+  text-decoration: none;
+  border: #fff;
+  border-color: rgb(249, 250, 252) !important;
+}
+
+.pagination ::marker {
+  color: #181614;
+}
+.page-link {
+  color: rgb(219, 124, 47);
+  padding: 1em;
+  text-decoration: none;
+  border-color: rgb(249, 250, 252) !important;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color: rgb(33, 37, 41);
+  border-color: rgb(249, 250, 252) !important;
+  text-decoration: none;
+}
+
+.noticia {
+  min-height: calc(100vh - 22rem);
+  padding: 0;
+  display: grid;
+  justify-content: center;
+}
+
+.container-alert {
+  display: none;
+}
+
+.container-info {
+  padding: 0 1.8rem 0 1.8rem;
+  color: #fff !important;
+}
+
+.alert {
+  font-size: 1.2rem;
+  color: #fff !important;
+}
