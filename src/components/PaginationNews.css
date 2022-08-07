@@ -20,6 +20,7 @@
 }
 .page-link {
   color: rgb(219, 124, 47);
+  font-size: bold !important;
   padding: 1em;
   text-decoration: none;
   border-color: rgb(249, 250, 252) !important;

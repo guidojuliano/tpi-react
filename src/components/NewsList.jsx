@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNews } from "../functions/getNews";
 import News from "./News";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "react-bootstrap/Spinner";
 import Paginado from "./PaginationNews";
 const NewsList = ({ search }) => {

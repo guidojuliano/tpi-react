@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 
 function NewsCard({ item }) {
   const { DateTime } = require("luxon");
-
   const getPublished = (date) => {
     let dia = DateTime.fromISO(date).setZone("UTC").toFormat("dd-MM-yyyy");
 
@@ -19,7 +18,16 @@ function NewsCard({ item }) {
   return (
     <>
       <Card variant="outlined" sx={{ maxWidth: 500 }} className="card-news">
-        <CardMedia component="img" image={item.urlToImage} alt="imagen" />
+        {item.urlToImage ? (
+          <CardMedia component="img" image={item.urlToImage} alt="imagen" />
+        ) : (
+          <CardMedia
+            component="img"
+            image="https://t4.ftcdn.net/jpg/04/00/24/31/360_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
+            alt="imagen"
+          />
+        )}
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {item.title}
@@ -29,7 +37,7 @@ function NewsCard({ item }) {
           </Typography>
         </CardContent>
         <CardActions className="card-footer">
-          <Button size="small" href={item.url}>
+          <Button size="small" href={item.url} target="_blank">
             IR A LA NOTICIA
           </Button>
           <Typography variant="body2" color="text.secondary">

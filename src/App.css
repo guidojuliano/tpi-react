@@ -36,11 +36,40 @@ h1 {
 .home,
 .search-page,
 .error-404 {
-  width: 100%;
+  width: 100vw;
   min-height: calc(100vh - 100px);
   padding-top: 2em;
   padding-bottom: 2em;
   background-color: #181614;
+}
+
+.home h1 {
+  position: relative;
+  font-size: 5em;
+  font-weight: bold;
+  color: #181614;
+  text-align: center;
+  -webkit-text-stroke: 2px rgb(66, 65, 65);
+}
+.home h1::before {
+  content: attr(data-text);
+  position: absolute;
+  color: #ed6c02;
+  -webkit-text-stroke: 0px rgb(66, 65, 65);
+  overflow: hidden;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+  70%,
+  90% {
+    width: 100%;
+  }
 }
 
 .custom-footer {
@@ -126,4 +155,46 @@ h1 {
   color: #fff;
   background-color: rgb(33, 37, 41);
   border-color: rgb(33, 37, 41);
+}
+
+.container-go-top {
+  position: fixed !important;
+  bottom: 7rem;
+  right: 14rem;
+  z-index: -1 !important;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: 0.5s;
+  transform: translate(-50%, -50%) !important;
+}
+
+.button-go-top {
+  transition: 2s !important;
+}
+
+.show-go-top {
+  z-index: 10 !important;
+}
+
+.show-go-top .button-go-top {
+  animation: popup 0.5s ease-in-out;
+  z-index: 11 !important;
+}
+
+@keyframes popup {
+  0% {
+    width: 0rem;
+    height: 0rem;
+  }
+  50% {
+    width: 3rem;
+    height: 3rem;
+  }
+  100% {
+    width: 1rem;
+    height: 1rem;
+  }
 }

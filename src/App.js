@@ -5,7 +5,6 @@ import Home from "./components/pages/Home";
 import Footer from "./components/Footer";
 import Error404 from "./components/pages/Error404";
 import Search from "./components/pages/Search";
-
 function App() {
   return (
     <div className="App">

@@ -10,7 +10,7 @@ function Header() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Navbar.Brand href="/">
           <NewspaperIcon />
-          <span>Notibusqueda</span>
+          <span>SNN</span>
         </Navbar.Brand>
       </Navbar.Collapse>
       <Navbar.Text className="navbar-search">
