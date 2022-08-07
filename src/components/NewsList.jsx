@@ -7,15 +7,14 @@ const NewsList = ({ search }) => {
   const [loading, setLoading] = useState(false);
   const [news, setNews] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
   const [totalResults, setTotalResults] = useState(0);
   const [maxResults, setMaxResults] = useState(false);
-
+  const pageSize = 10;
   const seteartotalPages = () => {
     if (totalResults % pageSize === 0) {
-      return Math.trunc(totalResults / pageSize);
+      return Math.trunc(totalResults / pageSize) - 10;
     }
-    return Math.trunc(totalResults / pageSize) + 10;
+    return Math.trunc(totalResults / pageSize) + 1;
   };
 
   const totalPages = seteartotalPages();
@@ -53,14 +52,16 @@ const NewsList = ({ search }) => {
         dataLength={totalResults}
         maxResults={maxResults}
       />
-      <Paginado
-        page={page}
-        setPage={setPage}
-        totalResults={totalResults}
-        totalPages={totalPages}
-        maxResults={maxResults}
-        pageSize={pageSize}
-      />
+      {totalResults > 1 && (
+        <Paginado
+          page={page}
+          setPage={setPage}
+          totalResults={totalResults}
+          totalPages={totalPages}
+          maxResults={maxResults}
+          pageSize={pageSize}
+        />
+      )}
     </>
   );
 };

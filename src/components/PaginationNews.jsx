@@ -62,7 +62,7 @@ function Paginado(props) {
         <Pagination.Item onClick={setPageNext}>
           {props.page + 1}
         </Pagination.Item>
-        <Pagination.Last onClick={setLastPage} />
+        <Pagination.Last disabled />
       </Pagination>
     );
   }
@@ -75,7 +75,7 @@ function Paginado(props) {
         <Pagination.Item onClick={setPageNext}>
           {props.page + 1}
         </Pagination.Item>
-        <Pagination.Last onClick={setLastPage} />
+        <Pagination.Last disabled onClick={setLastPage} />
       </Pagination>
     );
   }

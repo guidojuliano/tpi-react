@@ -34,10 +34,10 @@
 }
 
 .noticia {
-  min-height: calc(100vh - 22rem);
   padding: 0;
   display: grid;
   justify-content: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .container-alert {

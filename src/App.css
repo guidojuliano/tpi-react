@@ -10,7 +10,7 @@ h1 {
 }
 
 .custom-navbar {
-  height: 50px;
+  height: 50px !important;
   display: flex;
   padding-left: 1em !important;
   justify-content: space-between;
@@ -36,7 +36,7 @@ h1 {
 .home,
 .search-page,
 .error-404 {
-  width: 100vw;
+  min-width: 100%;
   min-height: calc(100vh - 100px);
   padding-top: 2em;
   padding-bottom: 2em;
@@ -45,7 +45,7 @@ h1 {
 
 .home h1 {
   position: relative;
-  font-size: 5em;
+  font-size: 6em;
   font-weight: bold;
   color: #181614;
   text-align: center;
@@ -133,11 +133,6 @@ h1 {
   align-content: center;
 }
 
-.noticia {
-  min-height: calc(100vh - 22rem);
-  padding: 0;
-}
-
 .pagination {
   display: flex;
   margin: 0;
@@ -161,40 +156,32 @@ h1 {
   position: fixed !important;
   bottom: 7rem;
   right: 14rem;
-  z-index: -1 !important;
   border: none;
   outline: none;
   color: #fff;
   cursor: pointer;
   padding: 0.5rem;
-  transition: 0.5s;
-  transform: translate(-50%, -50%) !important;
+  transition: 0.5s !important;
+  animation: pulse 1s;
 }
 
-.button-go-top {
-  transition: 2s !important;
-}
-
-.show-go-top {
-  z-index: 10 !important;
-}
-
-.show-go-top .button-go-top {
-  animation: popup 0.5s ease-in-out;
-  z-index: 11 !important;
-}
-
-@keyframes popup {
+@keyframes pulse {
   0% {
-    width: 0rem;
-    height: 0rem;
+    transform: scale(0.3);
   }
   50% {
-    width: 3rem;
-    height: 3rem;
+    transform: scale(1.2);
   }
   100% {
-    width: 1rem;
-    height: 1rem;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 860px) {
+  .home h1 {
+    font-size: 2.5em;
+  }
+  .home p {
+    font-size: 0.7em;
   }
 }

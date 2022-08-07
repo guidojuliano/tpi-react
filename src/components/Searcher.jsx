@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
+import SearchIcon from "@mui/icons-material/Search";
 export default function Searcher(props) {
   const [searchText, setSearchText] = useState("");
   const [messageSize, setMessageSize] = useState(false);
@@ -66,7 +67,7 @@ export default function Searcher(props) {
         onClick={onSearchClick}
       >
         {" "}
-        Buscar{" "}
+        <SearchIcon />{" "}
       </Button>
       {messageRequired && (
         <Alert variant="filled" severity="error">

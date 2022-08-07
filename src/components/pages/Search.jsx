@@ -1,20 +1,29 @@
+import Searcher from "../Searcher";
 import { Grid } from "@mui/material";
+import ButtonGoTop from "../ButtonGoTop";
+import { useState } from "react";
 import * as React from "react";
 import "../../App.css";
+import NewsList from "../NewsList";
 
 function Search() {
+  const [search, setSearch] = useState("");
+  const onSearch = (criterio) => {
+    setSearch(criterio);
+  };
+
   return (
     <Grid
       container
       direction="column"
-      className="search-page"
+      className="home"
       justifyContent="center"
       alignItems="center"
     >
-        <h1>Buscador de Noticias</h1>
-        <p>
-            Busca noticias en el mundo y obtén información sobre ellas.
-        </p>
+      <h1 data-text="SearchNewsNow">SearchNewsNow</h1>
+      <Searcher onSearch={onSearch} />
+      <NewsList search={search} />
+      <ButtonGoTop />
     </Grid>
   );
 }
