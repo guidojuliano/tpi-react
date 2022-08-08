@@ -32,6 +32,9 @@ function NewsCard({ item }) {
           <Typography gutterBottom variant="h5" component="div">
             {item.title}
           </Typography>
+          <Typography variant="h7" component="div">
+            De {item.source.name}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {item.description}
           </Typography>
