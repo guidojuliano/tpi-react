@@ -1,3 +1,5 @@
+//Componente que renderiza la lista de noticias
+
 import { useEffect, useState } from "react";
 import { getNews } from "../functions/getNews";
 import News from "./News";

@@ -1,3 +1,5 @@
+// Componente que renderiza el boton de ir hacia arriba
+
 import React, { useState, useEffect } from "react";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";

@@ -1,3 +1,5 @@
+//Componente que renderiza una noticia
+
 import NewsCard from "./NewsCard";
 import { Alert } from "react-bootstrap";
 import "../App.css";

@@ -1,9 +1,12 @@
+//Componente que renderiza el buscador de noticias
+
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import SearchIcon from "@mui/icons-material/Search";
+
 export default function Searcher(props) {
   const [searchText, setSearchText] = useState("");
   const [messageSize, setMessageSize] = useState(false);
@@ -15,9 +18,11 @@ export default function Searcher(props) {
   const onSearchClick = () => {
     setMessageSize(true);
     setMessageRequired(true);
+    //Si hay al menos 1 caracter en el buscador setea el messageRequired en falso
     if (searchText.length > 0) {
       setMessageRequired(false);
     }
+    //Si hay mas de 2 caracteres en el buscador setea el messageSize en falso
     if (searchText.length > 2) {
       props.onSearch(searchText);
       setMessageSize(false);

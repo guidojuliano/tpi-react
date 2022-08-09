@@ -1,3 +1,4 @@
+//Pagina de error 404 que evita que el usuario entre a una ruta no existente
 import { Grid } from "@mui/material";
 
 function Error404() {

@@ -1,3 +1,4 @@
+// Pagina de inicio de la aplicación
 import Searcher from "../Searcher";
 import { Grid } from "@mui/material";
 import ButtonGoTop from "../ButtonGoTop";

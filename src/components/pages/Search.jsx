@@ -1,3 +1,5 @@
+//Pagina de busqueda de noticias
+
 import Searcher from "../Searcher";
 import { Grid } from "@mui/material";
 import ButtonGoTop from "../ButtonGoTop";
