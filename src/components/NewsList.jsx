@@ -5,6 +5,7 @@ import { getNews } from "../functions/getNews";
 import News from "./News";
 import Spinner from "react-bootstrap/Spinner";
 import Paginado from "./PaginationNews";
+
 const NewsList = ({ search }) => {
   const [loading, setLoading] = useState(false);
   const [news, setNews] = useState([]);
